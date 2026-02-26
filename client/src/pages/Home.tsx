@@ -383,7 +383,7 @@ export default function Home() {
             <motion.a 
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
-              href="mailto:hello@example.com"
+              href="mailto:alaebilaizi@gmail.com"
               className="inline-flex items-center justify-center px-8 py-4 rounded-md bg-primary text-primary-foreground font-medium hover:bg-primary/90 transition-colors"
               data-testid="button-contact"
             >
