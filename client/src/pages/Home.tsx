@@ -329,24 +329,24 @@ export default function Home() {
           >
             
             <ProjectTerminalCard 
-              title="Minishell"
-              description="A custom shell implementation in C. Recreating bash functionalities including parsing, executing commands, pipes, and redirections."
+              title="Libft"
+              description="Custom C standard library recreating essential functions from libc. The foundation of all future 42 projects."
+              icon={<Code2 size={20}/>}
+              tech={["C", "Memory", "Strings", "Lists"]}
+            />
+
+            <ProjectTerminalCard 
+              title="ft_printf"
+              description="A custom implementation of the printf function, handling various format specifiers and edge cases."
               icon={<Terminal size={20}/>}
-              tech={["C", "Unix", "AST", "Processes"]}
+              tech={["C", "Variadic", "Parsing", "Formatting"]}
             />
 
             <ProjectTerminalCard 
-              title="Cub3D"
-              description="A 3D Ray-casting engine inspired by the classic Wolfenstein 3D. Explores mathematics, rendering, and window management."
-              icon={<Layers size={20}/>}
-              tech={["C", "MiniLibX", "Raycasting", "Math"]}
-            />
-
-            <ProjectTerminalCard 
-              title="Philosophers"
-              description="A study in multi-threading and mutex synchronization. Solving the classic dining philosophers problem without deadlocks."
-              icon={<Cpu size={20}/>}
-              tech={["C", "Threads", "Mutex", "Concurrency"]}
+              title="Get_Next_Line"
+              description="Reading from file descriptors line by line, managing static variables and multiple file descriptors."
+              icon={<Code2 size={20}/>}
+              tech={["C", "File I/O", "Static Vars", "Buffers"]}
             />
 
             <ProjectTerminalCard 
@@ -357,11 +357,24 @@ export default function Home() {
             />
 
             <ProjectTerminalCard 
-              title="The Foundation"
-              description="The core C libraries that power everything else: Libft (custom standard library), ft_printf (custom formatter), and Get_Next_Line."
-              icon={<Code2 size={20}/>}
-              tech={["C", "Data Structures", "Algorithms"]}
-              className="md:col-span-2 lg:col-span-2"
+              title="Minishell"
+              description="A custom shell implementation in C. Recreating bash functionalities including parsing, executing commands, pipes, and redirections."
+              icon={<Terminal size={20}/>}
+              tech={["C", "Unix", "AST", "Processes"]}
+            />
+
+            <ProjectTerminalCard 
+              title="Philosophers"
+              description="A study in multi-threading and mutex synchronization. Solving the classic dining philosophers problem without deadlocks."
+              icon={<Cpu size={20}/>}
+              tech={["C", "Threads", "Mutex", "Concurrency"]}
+            />
+
+            <ProjectTerminalCard 
+              title="Cub3D"
+              description="A 3D Ray-casting engine inspired by the classic Wolfenstein 3D. Explores mathematics, rendering, and window management."
+              icon={<Layers size={20}/>}
+              tech={["C", "MiniLibX", "Raycasting", "Math"]}
             />
 
           </motion.div>
