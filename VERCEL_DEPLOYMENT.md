@@ -8,11 +8,15 @@ This portfolio is a **static single-page application** built with:
 - **Animations**: Framer Motion
 - **Backend**: Express.js (Node.js) - only used in development
 
+## ✅ Build Successfully Tested
+Your project builds correctly! Output: `dist/public/` with index.html and assets.
+
 ## Deployment Steps
 
 ### 1. Prerequisites
 - Vercel account
 - GitHub repository (recommended) or Vercel CLI
+- **Important**: Run `npm install` locally first to ensure all dependencies are present
 
 ### 2. Deploy to Vercel
 

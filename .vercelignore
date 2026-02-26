@@ -1,0 +1,10 @@
+node_modules
+.git
+.env
+.env.*
+*.log
+.replit
+.DS_Store
+script
+server
+shared
