@@ -170,7 +170,6 @@ export default function Home() {
             { icon: <Linkedin size={22} />, link: "https://www.linkedin.com/in/alae-belaizi/", id: "social-linkedin", delay: 0.1 },
             { icon: <Facebook size={22} />, link: "https://www.facebook.com/alae.bilaizi.5", id: "social-facebook", delay: 0.2 },
             { icon: <Instagram size={22} />, link: "https://www.instagram.com/alaebilaizi/", id: "social-instagram", delay: 0.3 },
-            { icon: <MessageSquare size={22} />, link: "#", id: "social-discord", delay: 0.4, title: "0x4L43" },
           ].map((social, i) => (
             <motion.a
               key={i}
