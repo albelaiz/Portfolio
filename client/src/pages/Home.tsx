@@ -259,7 +259,7 @@ export default function Home() {
                   <div className="p-3 bg-primary/10 rounded-lg text-primary w-fit">
                     <MapPin size={24} />
                   </div>
-                  <a href="#" className="text-muted-foreground hover:text-primary transition-colors" data-testid="link-tamudastay">
+                  <a href="https://tamudastay.com" target="_blank" rel="noopener noreferrer" className="text-muted-foreground hover:text-primary transition-colors" data-testid="link-tamudastay">
                     <ExternalLink size={20} />
                   </a>
                 </div>
@@ -289,7 +289,7 @@ export default function Home() {
                   <div className="p-3 bg-primary/10 rounded-lg text-primary w-fit">
                     <ShoppingBag size={24} />
                   </div>
-                  <a href="#" className="text-muted-foreground hover:text-primary transition-colors" data-testid="link-parapharmacy">
+                  <a href="https://parapms.ma" target="_blank" rel="noopener noreferrer" className="text-muted-foreground hover:text-primary transition-colors" data-testid="link-parapharmacy">
                     <ExternalLink size={20} />
                   </a>
                 </div>
