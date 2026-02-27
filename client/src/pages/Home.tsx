@@ -251,7 +251,7 @@ export default function Home() {
             {/* TamudaStay */}
             <motion.div variants={itemVariants}>
               <TiltCard 
-                className="glass rounded-xl p-6 relative group overflow-hidden flex flex-col h-full cursor-pointer"
+                className="glass rounded-xl p-6 relative group overflow-hidden flex flex-col h-full cursor-pointer hover:shadow-[0_0_30px_rgba(59,130,246,0.3)] transition-shadow duration-300"
                 dataTestId="project-tamudastay"
               >
                 <div className="absolute top-0 right-0 p-6 opacity-10 group-hover:opacity-20 group-hover:scale-110 transition-all duration-500">
@@ -265,7 +265,9 @@ export default function Home() {
                     <ExternalLink size={20} />
                   </a>
                 </div>
-                <h3 className="text-xl font-bold mb-2">TamudaStay</h3>
+                <a href="https://tamudastay.com" target="_blank" rel="noopener noreferrer" className="text-xl font-bold mb-2 hover:text-primary transition-colors cursor-pointer inline-block">
+                  <h3>TamudaStay</h3>
+                </a>
                 <p className="text-muted-foreground mb-6 flex-1 relative z-10">
                   An Airbnb-style platform focused on Northern Morocco. Built with performance and user experience in mind, allowing users to discover and book premium accommodations.
                 </p>
@@ -281,7 +283,7 @@ export default function Home() {
             {/* Parapharmacy */}
             <motion.div variants={itemVariants}>
               <TiltCard 
-                className="glass rounded-xl p-6 relative group overflow-hidden flex flex-col h-full cursor-pointer"
+                className="glass rounded-xl p-6 relative group overflow-hidden flex flex-col h-full cursor-pointer hover:shadow-[0_0_30px_rgba(59,130,246,0.3)] transition-shadow duration-300"
                 dataTestId="project-parapharmacy"
               >
                 <div className="absolute top-0 right-0 p-6 opacity-10 group-hover:opacity-20 group-hover:scale-110 transition-all duration-500">
@@ -295,7 +297,9 @@ export default function Home() {
                     <ExternalLink size={20} />
                   </a>
                 </div>
-                <h3 className="text-xl font-bold mb-2">Parapharmacy E-commerce</h3>
+                <a href="https://parapms.ma" target="_blank" rel="noopener noreferrer" className="text-xl font-bold mb-2 hover:text-primary transition-colors cursor-pointer inline-block">
+                  <h3>Parapharmacy E-commerce</h3>
+                </a>
                 <p className="text-muted-foreground mb-6 flex-1 relative z-10">
                   A full-featured e-commerce and catalog site tailored for health and wellness products, featuring robust search, filtering, and a secure checkout flow.
                 </p>
