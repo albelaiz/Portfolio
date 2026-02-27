@@ -13,7 +13,10 @@ import {
   Cpu,
   Server,
   Layers,
-  Settings
+  Settings,
+  Send,
+  CheckCircle2,
+  Loader2
 } from "lucide-react";
 import { Canvas, useFrame } from "@react-three/fiber";
 import { Points, PointMaterial } from "@react-three/drei";
@@ -380,28 +383,23 @@ export default function Home() {
           </motion.div>
         </section>
         
-        {/* Contact Minimal Footer */}
-        <section id="contact" className="py-24 text-center">
+        {/* Contact Form */}
+        <section id="contact" className="py-24">
           <motion.div
-            initial={{ opacity: 0, scale: 0.95 }}
-            whileInView={{ opacity: 1, scale: 1 }}
-            viewport={{ once: true }}
-            className="max-w-xl mx-auto glass rounded-2xl p-12"
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, margin: "-100px" }}
+            className="max-w-2xl mx-auto"
           >
-            <h2 className="text-3xl font-bold mb-4">Get In Touch</h2>
-            <p className="text-muted-foreground mb-8">
-              Whether you have a question or just want to say hi, my inbox is always open. 
-              I'm currently looking for new opportunities!
-            </p>
-            <motion.a 
-              whileHover={{ scale: 1.05 }}
-              whileTap={{ scale: 0.95 }}
-              href="mailto:alaebilaizi@gmail.com"
-              className="inline-flex items-center justify-center px-8 py-4 rounded-md bg-primary text-primary-foreground font-medium hover:bg-primary/90 transition-colors"
-              data-testid="button-contact"
-            >
-              Say Hello
-            </motion.a>
+            <div className="text-center mb-12">
+              <h2 className="text-3xl font-bold mb-4">Get In Touch</h2>
+              <p className="text-muted-foreground">
+                Whether you have a question or just want to say hi, my inbox is always open. 
+                I'm currently looking for new opportunities!
+              </p>
+            </div>
+
+            <ContactForm />
           </motion.div>
         </section>
 
@@ -465,5 +463,199 @@ function ProjectTerminalCard({ title, description, icon, tech, className = "" }:
         </div>
       </TiltCard>
     </motion.div>
+  );
+}
+
+function ContactForm() {
+  const [formData, setFormData] = useState({
+    name: "",
+    email: "",
+    subject: "General Inquiry",
+    message: ""
+  });
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [submitStatus, setSubmitStatus] = useState<"idle" | "success" | "error">("idle");
+
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    setIsSubmitting(true);
+    setSubmitStatus("idle");
+
+    try {
+      const response = await fetch("/api/contact", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(formData),
+      });
+
+      if (response.ok) {
+        setSubmitStatus("success");
+        setFormData({ name: "", email: "", subject: "General Inquiry", message: "" });
+        setTimeout(() => setSubmitStatus("idle"), 5000);
+      } else {
+        setSubmitStatus("error");
+        setTimeout(() => setSubmitStatus("idle"), 5000);
+      }
+    } catch (error) {
+      setSubmitStatus("error");
+      setTimeout(() => setSubmitStatus("idle"), 5000);
+    } finally {
+      setIsSubmitting(false);
+    }
+  };
+
+  const formVariants = {
+    hidden: { opacity: 0, y: 30 },
+    visible: {
+      opacity: 1,
+      y: 0,
+      transition: {
+        duration: 0.6,
+        staggerChildren: 0.1
+      }
+    }
+  };
+
+  const itemVariants = {
+    hidden: { opacity: 0, y: 20 },
+    visible: { opacity: 1, y: 0 }
+  };
+
+  return (
+    <motion.form
+      variants={formVariants}
+      initial="hidden"
+      whileInView="visible"
+      viewport={{ once: true, margin: "-50px" }}
+      onSubmit={handleSubmit}
+      className="glass rounded-2xl p-8 space-y-6"
+    >
+      {/* Name Input */}
+      <motion.div variants={itemVariants}>
+        <label htmlFor="name" className="block text-sm font-medium mb-2">
+          Name
+        </label>
+        <input
+          type="text"
+          id="name"
+          required
+          value={formData.name}
+          onChange={(e) => setFormData({ ...formData, name: e.target.value })}
+          className="w-full px-4 py-3 rounded-lg bg-background/50 border border-border focus:border-primary focus:ring-2 focus:ring-primary/20 outline-none transition-all"
+          placeholder="Your name"
+        />
+      </motion.div>
+
+      {/* Email Input */}
+      <motion.div variants={itemVariants}>
+        <label htmlFor="email" className="block text-sm font-medium mb-2">
+          Email
+        </label>
+        <input
+          type="email"
+          id="email"
+          required
+          value={formData.email}
+          onChange={(e) => setFormData({ ...formData, email: e.target.value })}
+          className="w-full px-4 py-3 rounded-lg bg-background/50 border border-border focus:border-primary focus:ring-2 focus:ring-primary/20 outline-none transition-all"
+          placeholder="your.email@example.com"
+        />
+      </motion.div>
+
+      {/* Subject Dropdown */}
+      <motion.div variants={itemVariants}>
+        <label htmlFor="subject" className="block text-sm font-medium mb-2">
+          Subject
+        </label>
+        <select
+          id="subject"
+          value={formData.subject}
+          onChange={(e) => setFormData({ ...formData, subject: e.target.value })}
+          className="w-full px-4 py-3 rounded-lg bg-background/50 border border-border focus:border-primary focus:ring-2 focus:ring-primary/20 outline-none transition-all cursor-pointer"
+        >
+          <option value="General Inquiry">General Inquiry</option>
+          <option value="Job Opportunity">Job Opportunity</option>
+          <option value="Freelance Project">Freelance Project</option>
+          <option value="Collaboration">Collaboration</option>
+          <option value="Other">Other</option>
+        </select>
+      </motion.div>
+
+      {/* Message Textarea */}
+      <motion.div variants={itemVariants}>
+        <label htmlFor="message" className="block text-sm font-medium mb-2">
+          Message
+        </label>
+        <textarea
+          id="message"
+          required
+          value={formData.message}
+          onChange={(e) => setFormData({ ...formData, message: e.target.value })}
+          rows={6}
+          className="w-full px-4 py-3 rounded-lg bg-background/50 border border-border focus:border-primary focus:ring-2 focus:ring-primary/20 outline-none transition-all resize-none"
+          placeholder="Your message..."
+        />
+      </motion.div>
+
+      {/* Submit Button */}
+      <motion.div variants={itemVariants}>
+        <motion.button
+          type="submit"
+          disabled={isSubmitting || submitStatus === "success"}
+          whileHover={{ scale: isSubmitting ? 1 : 1.02 }}
+          whileTap={{ scale: isSubmitting ? 1 : 0.98 }}
+          className={`w-full flex items-center justify-center gap-2 px-8 py-4 rounded-lg font-medium transition-all ${
+            submitStatus === "success"
+              ? "bg-green-600 text-white"
+              : submitStatus === "error"
+              ? "bg-red-600 text-white"
+              : "bg-primary text-primary-foreground hover:bg-primary/90"
+          } ${isSubmitting ? "opacity-70 cursor-not-allowed" : ""}`}
+        >
+          {isSubmitting ? (
+            <>
+              <Loader2 size={20} className="animate-spin" />
+              Sending...
+            </>
+          ) : submitStatus === "success" ? (
+            <>
+              <CheckCircle2 size={20} />
+              Message Sent!
+            </>
+          ) : submitStatus === "error" ? (
+            <>
+              Error - Try Again
+            </>
+          ) : (
+            <>
+              <Send size={20} />
+              Send Message
+            </>
+          )}
+        </motion.button>
+      </motion.div>
+
+      {/* Success/Error Messages */}
+      {submitStatus === "success" && (
+        <motion.div
+          initial={{ opacity: 0, y: -10 }}
+          animate={{ opacity: 1, y: 0 }}
+          className="text-center text-green-600 dark:text-green-400 text-sm"
+        >
+          Thanks for reaching out! I'll get back to you soon.
+        </motion.div>
+      )}
+      {submitStatus === "error" && (
+        <motion.div
+          initial={{ opacity: 0, y: -10 }}
+          animate={{ opacity: 1, y: 0 }}
+          className="text-center text-red-600 dark:text-red-400 text-sm"
+        >
+          Oops! Something went wrong. Please try again or email me directly.
+        </motion.div>
+      )}
+    </motion.form>
   );
 }
