@@ -200,7 +200,7 @@ export default function Home() {
           >
             <h2 className="text-primary font-mono mb-5 text-lg">Hi, my name is</h2>
             <h1 className="text-5xl md:text-7xl font-bold font-sans tracking-tight mb-4 text-foreground">
-              Albelaiz.
+              Alae Belaizi.
             </h1>
             <h2 className="text-4xl md:text-6xl font-bold font-sans tracking-tight text-muted-foreground mb-8">
               I build digital solutions.
